@@ -15,4 +15,12 @@ router.get("/:id", studentsController.getSingle);
 
 router.post("/", studentsController.createStudent);
 
+// This route will update the data
+
+router.put('/:id', studentsController.updateStudent);
+
+// This route will delete the data
+
+router.put('/:id', studentsController.deleteStudent);
+
 module.exports = router;

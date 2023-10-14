@@ -53,4 +53,37 @@ const createStudent = async (req, res, next) => {
   }
 };
 
-module.exports = { getAll, getSingle, createStudent };
+const updateStudent = async (req, res, next) => {
+  const userId = new ObjectId(req.params.id);
+  const student = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    birthDate: req.body.birthDate,
+    homeAddress: req.body.homeAddress,
+    contactInformation: req.body.contactInformation,
+    email: req.body.email,
+    studentID: req.body.studentID,
+    enrollmentStatus: req.body.enrollmentStatus,
+    academicProgram: req.body.academicProgram,
+  };
+  const response = await mongodb.getDb().db('students').collection('students').replaceOne({ _id: userId }, student);
+  console.log(response);
+  if (response.modifiedCount > 0) {
+    res.status(204).send();
+  } else {
+    res.status(500).json(response.error || 'Some error occurred while updating the contact');
+  };
+};
+
+const deleteStudent = async (req, res, next) => {
+  const userId = new ObjectId(req.params.id);
+  const response = await mongodb.getDb().db('students').collection('students').deleteOne({ _id: userId }, true);
+  console.log(response);
+  if (response.deletedCount > 0) {
+    res.status(200).send();
+  } else {
+    res.status(500).json(response.error || 'Some errors occurred while deleting the contact');
+  };
+};
+
+module.exports = { getAll, getSingle, createStudent, updateStudent, deleteStudent };
