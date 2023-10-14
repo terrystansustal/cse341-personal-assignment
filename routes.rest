@@ -1,0 +1,97 @@
+// Local host ------------
+
+###
+GET http://localhost:8080/students
+
+###
+GET http://localhost:8080/students/6528b7298ac3f3db729ec2f7
+
+###
+GET http://localhost:8080/students/6528b79d8ac3f3db729ec2f8
+
+###
+GET http://localhost:8080/students/6528b7e18ac3f3db729ec2f9
+
+###
+POST http://localhost:8080/students/ HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Harry",
+    "lastName": "Mans",
+    "birthDate": "07/05/1995",
+    "homeAddress": "875 Fake Address",
+    "contactInformation": "000-032-0000",
+    "email": "testemail@test.com",
+    "studentID": "3215",
+    "enrollmentStatus": "Enrolled",
+    "academicProgram": "Cyber Security"
+}
+
+###
+PUT http://localhost:8080/students/6528b7298ac3f3db729ec2f7 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Jake",
+    "lastName": "Cook",
+    "birthDate": "05/18/1999",
+    "homeAddress": "888 Fake Address",
+    "contactInformation": "111-000-1010",
+    "email": "testemail@test.com",
+    "studentID": "3215",
+    "enrollmentStatus": "Enrolled",
+    "academicProgram": "Nursing"
+}
+
+###
+DELETE http://localhost:8080/students/6528b7e18ac3f3db729ec2f9 HTTP/1.1
+
+// Render Links -------------
+
+###
+GET https://cse341-8296.onrender.com/students
+
+###
+GET https://cse341-8296.onrender.com/contacts/6528b7298ac3f3db729ec2f7
+
+###
+GET https://cse341-8296.onrender.com/contacts/6528b79d8ac3f3db729ec2f8
+
+###
+GET https://cse341-8296.onrender.com/contacts/6528b7e18ac3f3db729ec2f9
+
+###
+POST https://cse341-8296.onrender.com/students HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Harry",
+    "lastName": "Mans",
+    "birthDate": "07/05/1995",
+    "homeAddress": "875 Fake Address",
+    "contactInformation": "000-032-0000",
+    "email": "testemail@test.com",
+    "studentID": "3215",
+    "enrollmentStatus": "Enrolled",
+    "academicProgram": "Cyber Security"
+}
+
+###
+PUT https://cse341-8296.onrender.com/students/6528b7298ac3f3db729ec2f7 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Jake",
+    "lastName": "Cook",
+    "birthDate": "05/18/1999",
+    "homeAddress": "888 Fake Address",
+    "contactInformation": "111-000-1010",
+    "email": "testemail@test.com",
+    "studentID": "3215",
+    "enrollmentStatus": "Enrolled",
+    "academicProgram": "Nursing"
+}
+
+###
+DELETE https://cse341-8296.onrender.com/students/6528b7e18ac3f3db729ec2f9 HTTP/1.1
