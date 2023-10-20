@@ -50,19 +50,19 @@ DELETE http://localhost:8080/students/6528b7e18ac3f3db729ec2f HTTP/1.1
 // Render Links -------------
 
 ###
-GET https://cse341-8296.onrender.com/students
+GET https://cse341-personal-assignment-uohb.onrender.com/students
 
 ###
-GET https://cse341-8296.onrender.com/contacts/6528b7298ac3f3db729ec2f7
+GET https://cse341-personal-assignment-uohb.onrender.com/students/6528b7298ac3f3db729ec2f7
 
 ###
-GET https://cse341-8296.onrender.com/contacts/6528b79d8ac3f3db729ec2f8
+GET https://cse341-personal-assignment-uohb.onrender.com/students/6528b79d8ac3f3db729ec2f8
 
 ###
-GET https://cse341-8296.onrender.com/contacts/6528b7e18ac3f3db729ec2f9
+GET https://cse341-personal-assignment-uohb.onrender.com/students/6528b7e18ac3f3db729ec2f9
 
 ###
-POST https://cse341-8296.onrender.com/students HTTP/1.1
+POST https://cse341-personal-assignment-uohb.onrender.com/students HTTP/1.1
 content-type: application/json
 
 {
@@ -78,7 +78,7 @@ content-type: application/json
 }
 
 ###
-PUT https://cse341-8296.onrender.com/students/6528b7298ac3f3db729ec2f7 HTTP/1.1
+PUT https://cse341-personal-assignment-uohb.onrender.com/students/6528b7298ac3f3db729ec2f7 HTTP/1.1
 content-type: application/json
 
 {
@@ -94,4 +94,4 @@ content-type: application/json
 }
 
 ###
-DELETE https://cse341-8296.onrender.com/students/6531dfbbe5c82faa4a4d8200 HTTP/1.1
+DELETE https://cse341-personal-assignment-uohb.onrender.com/students/6531dfbbe5c82faa4a4d8200 HTTP/1.1
