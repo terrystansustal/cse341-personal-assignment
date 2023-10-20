@@ -5,7 +5,7 @@
     "description": "My personal assignment API",
     "version": "1.0.0"
   },
-  "host": "cse341-personal-assignment-uohb.onrender.com",
+  "host": "cse341-8296.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
@@ -77,6 +77,9 @@
           "201": {
             "description": "Created"
           },
+          "412": {
+            "description": "Precondition Failed"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -100,10 +103,77 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       },
       "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "birthDate": {
+                  "example": "any"
+                },
+                "homeAddress": {
+                  "example": "any"
+                },
+                "contactInformation": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "studentID": {
+                  "example": "any"
+                },
+                "enrollmentStatus": {
+                  "example": "any"
+                },
+                "academicProgram": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
         "description": "",
         "parameters": [
           {
@@ -116,6 +186,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
