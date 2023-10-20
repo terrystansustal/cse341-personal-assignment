@@ -18,10 +18,10 @@ router.post("/", validation.saveContact, studentsController.createStudent);
 
 // This route will update the data
 
-router.put('/:id', validation.saveContact, studentsController.updateStudent);
+router.put("/:id", validation.saveContact, studentsController.updateStudent);
 
 // This route will delete the data
 
-router.delete('/:id', studentsController.deleteStudent);
+router.delete("/:id", studentsController.deleteStudent);
 
 module.exports = router;

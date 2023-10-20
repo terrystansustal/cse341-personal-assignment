@@ -14,34 +14,47 @@ const getAll = async (req, res, next) => {
   });
 };
 
+// const getSingle = async (req, res, next) => {
+//   if (!ObjectId.isValid(req.params.id)) {
+//     res.status(400).json('Must use a valid student id to find a student.');
+//   }
+//   // const userId = new ObjectId(req.params.id);
+//   // const result = await mongodb
+//   //   .getDb()
+//   //   .db("students")
+//   //   .collection("students")
+//   //   .find({ _id: userId });
+//   // result.toArray().then((lists) => {
+//   //   res.setHeader("Content-Type", "application/json");
+//   //   res.status(200).json(lists[0]);
+//   // });
+//   const userId = new ObjectId(req.params.id);
+//   const result = mongodb.getDb().db("students").collection("students").find({ _id: userId });result.toArray((err, result) => {
+//       if (err) {
+//         res.status(400).json({ message: result });
+//       }
+//     res.setHeader("Content-Type", "application/json");
+//     res.status(200).json(result[0]);
+//   });
+// };
+
 const getSingle = async (req, res, next) => {
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Must use a valid student id to find a student.');
+    res.status(400).json("Must use a valid student id to find a student.");
+    return; // Exit early if the ID is not valid.
   }
-  // const userId = new ObjectId(req.params.id);
-  // const result = await mongodb
-  //   .getDb()
-  //   .db("students")
-  //   .collection("students")
-  //   .find({ _id: userId });
-  // result.toArray().then((lists) => {
-  //   res.setHeader("Content-Type", "application/json");
-  //   res.status(200).json(lists[0]);
-  // });
+
   const userId = new ObjectId(req.params.id);
-  // const result = await mongodb *part of original code*
-  mongodb
-    .getDb()
-    .db("students")
-    .collection("students")
-    .find({ _id: userId })
-    .toArray((err, result) => {
-      if (err) {
-        res.status(400).json({ message: err });
-      }
+  const collection = mongodb.getDb().db("students").collection("students");
+  
+  const result = await collection.findOne({ _id: userId });
+
+  if (result) {
     res.setHeader("Content-Type", "application/json");
-    res.status(200).json(result[0]);
-  });
+    res.status(200).json(result);
+  } else {
+    res.status(404).json("Student not found");
+  }
 };
 
 const createStudent = async (req, res, next) => {
@@ -105,7 +118,7 @@ const deleteStudent = async (req, res, next) => {
   if (response.deletedCount > 0) {
     res.status(200).send();
   } else {
-    res.status(500).json(response.error || 'Some errors occurred while deleting the contact');
+    res.status(500).json(response.error || 'Some errors occurred while deleting the student');
   };
 };
 

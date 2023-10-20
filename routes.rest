@@ -45,7 +45,7 @@ content-type: application/json
 }
 
 ###
-DELETE http://localhost:8080/students/652aeaa772556cf6948614fb HTTP/1.1
+DELETE http://localhost:8080/students/6528b7e18ac3f3db729ec2f HTTP/1.1
 
 // Render Links -------------
 
@@ -94,4 +94,4 @@ content-type: application/json
 }
 
 ###
-DELETE https://cse341-8296.onrender.com/students/6528b7e18ac3f3db729ec2f9 HTTP/1.1
+DELETE https://cse341-8296.onrender.com/students/6531dfbbe5c82faa4a4d8200 HTTP/1.1
