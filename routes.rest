@@ -41,11 +41,11 @@ content-type: application/json
     "email": "testemail@test.com",
     "studentID": "3215",
     "enrollmentStatus": "Enrolled",
-    "academicProgram": "Nursing"
+    "academicProgram": "Web Development"
 }
 
 ###
-DELETE http://localhost:8080/students/6528b7e18ac3f3db729ec2f9 HTTP/1.1
+DELETE http://localhost:8080/students/652aeaa772556cf6948614fb HTTP/1.1
 
 // Render Links -------------
 

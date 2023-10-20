@@ -15,15 +15,32 @@ const getAll = async (req, res, next) => {
 };
 
 const getSingle = async (req, res, next) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid student id to find a student.');
+  }
+  // const userId = new ObjectId(req.params.id);
+  // const result = await mongodb
+  //   .getDb()
+  //   .db("students")
+  //   .collection("students")
+  //   .find({ _id: userId });
+  // result.toArray().then((lists) => {
+  //   res.setHeader("Content-Type", "application/json");
+  //   res.status(200).json(lists[0]);
+  // });
   const userId = new ObjectId(req.params.id);
-  const result = await mongodb
+  // const result = await mongodb *part of original code*
+  mongodb
     .getDb()
     .db("students")
     .collection("students")
-    .find({ _id: userId });
-  result.toArray().then((lists) => {
+    .find({ _id: userId })
+    .toArray((err, result) => {
+      if (err) {
+        res.status(400).json({ message: err });
+      }
     res.setHeader("Content-Type", "application/json");
-    res.status(200).json(lists[0]);
+    res.status(200).json(result[0]);
   });
 };
 
@@ -54,6 +71,9 @@ const createStudent = async (req, res, next) => {
 };
 
 const updateStudent = async (req, res, next) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid student id to update a student')
+  }
   const userId = new ObjectId(req.params.id);
   const student = {
     firstName: req.body.firstName,
@@ -76,6 +96,9 @@ const updateStudent = async (req, res, next) => {
 };
 
 const deleteStudent = async (req, res, next) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must be a valid student id to delete a contact');
+  }
   const userId = new ObjectId(req.params.id);
   const response = await mongodb.getDb().db('students').collection('students').deleteOne({ _id: userId }, true);
   console.log(response);
