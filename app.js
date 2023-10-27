@@ -7,6 +7,8 @@ const mongodb = require("./db/connection");
 const passport = require("passport");
 require('./auth');
 
+const studentsRoutes = require('./routes/students');
+
 // If the request has a user already, bring it to the next point. If not, error code of 401 = unauthorized
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
@@ -39,8 +41,14 @@ app
   })
 
   .get('/protected', isLoggedIn, (req, res) => {
-    res.send(`Welcome ${req.user.displayName}`);
+    res.send(`Welcome ${req.user.displayName} <a href="/students">Students</a>`);
   })
+
+  .use((req, res, next) => {
+    // Apply isLoggedIn middleware here to protect the '/students' route
+    isLoggedIn(req, res, next);
+  })
+  .use('/students', studentsRoutes)
 
   .get('/logout', (req, res) => {
     req.logout(function(err) {
