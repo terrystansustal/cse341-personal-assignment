@@ -1,19 +1,61 @@
 // app.js will be the main server for this program
 
 const express = require("express");
+const session = require('express-session');
 const bodyParser = require("body-parser");
 const mongodb = require("./db/connection");
+const passport = require("passport");
+require('./auth');
+
+// If the request has a user already, bring it to the next point. If not, error code of 401 = unauthorized
+function isLoggedIn(req, res, next) {
+  req.user ? next() : res.sendStatus(401);
+}
 
 const port = process.env.port || 8080;
 const app = express();
 
 app
+  .use(session({ secret: 'cats'}))
+  .use(passport.initialize())
+  .use(passport.session())
+
   .get('/', (req, res) => {
     res.send('<a href="/auth/google">Authenticate with Google</a>');
   })
-  .get('/protected', (req, res) => {
-    res.send('Welcome!');
+
+  // Use Passport strategy
+  .get('/auth/google',
+  passport.authenticate('google', { scope: ['email', 'profile'] }))
+
+  .get('/google/callback',
+  passport.authenticate('google', {
+    successRedirect: '/protected',
+    failureRedirect: '/auth/failure',
+  }))
+
+  .get('/auth/failure', (req, res) => {
+    res.send('Something went wrong')
   })
+
+  .get('/protected', isLoggedIn, (req, res) => {
+    res.send(`Welcome ${req.user.displayName}`);
+  })
+
+  .get('/logout', (req, res) => {
+    req.logout(function(err) {
+      if (err) {
+        console.error(err);
+      }
+      req.session.destroy(function(err) {
+        if (err) {
+          console.error(err);
+        }
+        res.send('Goodbye!');
+      });
+    });
+  })
+
   .use(bodyParser.json())
   .use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");

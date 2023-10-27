@@ -11,7 +11,7 @@ passport.use(new GoogleStrategy({
     passReqToCallback: true
   },
   function(request, accessToken, refreshToken, profile, done) {
-      return done(err, profile);
+      return done(null, profile);
     // function(request, accessToken, refreshToken, profile, done) {
     // User.findOrCreate({ googleId: profile.id }, function (err, user) {
     //     return done(err, user);
