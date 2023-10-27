@@ -8,6 +8,12 @@ const port = process.env.port || 8080;
 const app = express();
 
 app
+  .get('/', (req, res) => {
+    res.send('<a href="/auth/google">Authenticate with Google</a>');
+  })
+  .get('/protected', (req, res) => {
+    res.send('Welcome!');
+  })
   .use(bodyParser.json())
   .use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
