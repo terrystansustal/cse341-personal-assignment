@@ -41,7 +41,7 @@ app
   })
 
   .get('/protected', isLoggedIn, (req, res) => {
-    res.send(`Welcome ${req.user.displayName} <a href="/students">Students</a>`);
+    res.send(`Welcome ${req.user.displayName} <a href="/students">Students</a> <a href="./routes/index">Students</a>`);
   })
 
   .use((req, res, next) => {
