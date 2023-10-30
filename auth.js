@@ -7,7 +7,7 @@ const GOOGLE_CLIENT_SECRET = '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';
 passport.use(new GoogleStrategy({
     clientID:     GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:8080/google/callback",
+    callbackURL: "https://cse341-personal-assignment-uohb.onrender.com/google/callback",
     passReqToCallback: true
   },
   function(request, accessToken, refreshToken, profile, done) {

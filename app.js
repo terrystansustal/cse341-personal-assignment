@@ -23,7 +23,7 @@ app
   .use(passport.session())
 
   .get('/', (req, res) => {
-    res.send('<a href="/auth/google">Authenticate with Google</a>');
+    res.send('<a href="/auth/google">Log in with Google</a>');
   })
 
   // Use Passport strategy
