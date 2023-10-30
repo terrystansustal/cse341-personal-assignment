@@ -37,11 +37,15 @@ app
   }))
 
   .get('/auth/failure', (req, res) => {
-    res.send('Something went wrong')
+    res.send('Something went wrong. Please try again.')
   })
 
   .get('/protected', isLoggedIn, (req, res) => {
     res.send(`Welcome ${req.user.displayName} <a href="/students">Students</a> <a href="https://cse341-personal-assignment-uohb.onrender.com/api-docs/">API DOCS</a>`);
+  })
+
+  .get('/students/6528b7298ac3f3db729ec2f7', isLoggedIn, (req, res) => {
+    res.send(`Trial`);
   })
 
   .use((req, res, next) => {
@@ -59,7 +63,7 @@ app
         if (err) {
           console.error(err);
         }
-        res.send('Goodbye!');
+        res.send('Thanks for using our app.');
       });
     });
   })
