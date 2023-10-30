@@ -41,7 +41,7 @@ app
   })
 
   .get('/protected', isLoggedIn, (req, res) => {
-    res.send(`Welcome ${req.user.displayName} <a href="/students">Students</a> <a href="./routes/index.js">API DOCS</a>`);
+    res.send(`Welcome ${req.user.displayName} <a href="/students">Students</a> <a href="https://cse341-personal-assignment-uohb.onrender.com/api-docs/">API DOCS</a>`);
   })
 
   .use((req, res, next) => {
