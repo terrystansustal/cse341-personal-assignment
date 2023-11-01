@@ -13,6 +13,7 @@ const saveContact = (req, res, next) => {
       academicProgram: "required|string"
     };
     validator(req.body, validationRule, {}, (err, status) => {
+        console.log(req.body);
         if (!status) {
             res.status(412).send({
                 success: false,
