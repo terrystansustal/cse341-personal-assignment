@@ -40,6 +40,7 @@ app
     res.send('Something went wrong. Please try again.')
   })
 
+  // This is the link that will open once the user logs in
   .get('/protected', isLoggedIn, (req, res) => {
     res.send(`Welcome ${req.user.displayName} <a href="/students">Students</a> <a href="https://cse341-personal-assignment-uohb.onrender.com/api-docs/">API DOCS</a> <a href="/logout">Log out</a>`);
   })

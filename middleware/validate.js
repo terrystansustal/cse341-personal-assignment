@@ -7,7 +7,7 @@ const saveContact = (req, res, next) => {
       birthDate: "required|string",
       homeAddress: "required|string",
       contactInformation: "required|string",
-      email: "required|email",
+      email: "required|string",
       studentID: "required|string",
       enrollmentStatus: "required|string",
       academicProgram: "required|string"
