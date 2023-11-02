@@ -14,30 +14,6 @@ const getAll = async (req, res, next) => {
   });
 };
 
-// const getSingle = async (req, res, next) => {
-//   if (!ObjectId.isValid(req.params.id)) {
-//     res.status(400).json('Must use a valid student id to find a student.');
-//   }
-//   // const userId = new ObjectId(req.params.id);
-//   // const result = await mongodb
-//   //   .getDb()
-//   //   .db("students")
-//   //   .collection("students")
-//   //   .find({ _id: userId });
-//   // result.toArray().then((lists) => {
-//   //   res.setHeader("Content-Type", "application/json");
-//   //   res.status(200).json(lists[0]);
-//   // });
-//   const userId = new ObjectId(req.params.id);
-//   const result = mongodb.getDb().db("students").collection("students").find({ _id: userId });result.toArray((err, result) => {
-//       if (err) {
-//         res.status(400).json({ message: result });
-//       }
-//     res.setHeader("Content-Type", "application/json");
-//     res.status(200).json(result[0]);
-//   });
-// };
-
 const getSingle = async (req, res, next) => {
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json("Must use a valid student id to find a student.");
